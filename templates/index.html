@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mesh | Resume Scanner</title>
+    <meta name="description" content="A Resume Analyzer driven by NLP that takes the guesswork out of applying to jobs and internships."/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+</head>
+<body>
+
+<!--Header Section-->
+<section class="bg-gradient pt-5 pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                <div class="heading-brand">Mesh</div>
+                <a href="https://github.com/aravindnatch/mesh" class="btn btn-dark svg-icon">
+                    <em class="mr-2" data-feather="github"></em>
+                    GitHub
+                </a>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-8 mx-auto text-center">
+                <h1>A Resume Analyzer driven by NLP</h1>
+                <p class="lead mb-5">
+                    Mesh is a lightweight resume scanner that takes the guesswork out of applying to jobs
+                    and internships by demystifying Application Tracking Systems (ATS) and by suggesting jobs that match
+                    your skillset. Identify where you stand, leverage feedback, and land more interviews. </p>
+
+                <form method="POST" action="/upload" enctype="multipart/form-data">
+                    <input type="file" name='file' onchange="form.submit()" id="upload" accept=".pdf" hidden/>
+                    <label for="upload" class="btn btn-success svg-icon">                    
+                        <em class="mr-2" data-feather="upload-cloud"></em>
+                        Upload
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <div class="code-window">
+                    <div class="dots">
+                        <div class="red"></div>
+                        <div class="orange"></div>
+                        <div class="green"></div>
+                    </div>
+                    <pre class="language-javascript">
+                        <p id="demo"></p>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--footer-->
+<!-- <footer class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="https://github.com/LeaVerou/prism/">check out the code</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-md-4 mx-auto text-muted text-center small-xl">
+                &copy; 2021 Aravind & Rahul. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</footer> -->
+
+<script>
+    var i = 0;
+    var txt = `Resume Breakdown: 
+    Formatting => 87%
+    Keywords => 46%
+    Company Match => 98%
+
+Matched Jobs:
+    CyberCoders => 98%
+    Goahead Solutions => 86%
+    Procter & Gamble => 78%
+    Sysmind => 76%
+    TEKsystems => 75%`;
+
+    var speed = 50;
+    typeWriter()
+    
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+</script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="{{ url_for('static',filename='js/scripts.js') }}"></script>
+</body>
+</html>
